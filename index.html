@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking Activity Evaluator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Speaking Activity Evaluator</h1>
+    <p class="subtitle"><strong>Topic:</strong> What Helps Me Learn? | <strong>Total Points:</strong> 100</p>
+
+    <div class="form-group">
+        <label for="studentSelect">Select Student:</label>
+        <select id="studentSelect">
+            <option value="">-- Choose a Student --</option>
+            <option>Sara Janeth Aburto Hernandez</option>
+            <option>Luis Fernando Andara Pavon</option>
+            <option>Oscar Manuel Armas Pineda</option>
+            <option>Sarai de los Angeles Brenes Romero</option>
+            <option>Andrea Sofia Flores Aleman</option>
+            <option>Osmara Carolina Gutierrez Romero</option>
+            <option>Alicia Guadalupe Guzman Navarro</option>
+            <option>Oscar Daniel Herrera Juarez</option>
+            <option>Amalia Sofia de Guadalupe Maltez Garcia</option>
+            <option>Leonel Andres Maltez Garcia</option>
+            <option>Melany Sofia Martinez Perez</option>
+            <option>Loriang de Jesus Masis Gonzalez</option>
+            <option>Fernanda Isabela Mercado Gonzalez</option>
+            <option>Luis Carlos Romero Mendez</option>
+            <option>Danieska Isabella Saavedra Campos</option>
+            <option>Imara Andrea Saavedra Hernandez</option>
+            <option>Alizeth Francela Sanchez Ruiz</option>
+            <option>Jafeth Jose Sanchez Victor</option>
+            <option>Genesis Brigith Umaña Rojas</option>
+            <option>Gabriela Yahaira Zeledon Lopez</option>
+        </select>
+    </div>
+
+    <table class="rubric-table">
+        <thead>
+            <tr>
+                <th>Criteria</th>
+                <th>Excellent</th>
+                <th>Good</th>
+                <th>Satisfactory</th>
+                <th>Needs Improvement</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Row 1: Modal Verbs -->
+            <tr id="row1" data-criterion="Modal Verbs Usage">
+                <td class="criterion-cell">
+                    <strong>Modal Verbs Usage</strong><br>
+                    <small>(30 Points Max)</small>
+                </td>
+                <td class="level-cell" onclick="selectScore(1, 30, 'Excellent', this)">
+                    <label><input type="radio" name="c1" value="30"> <strong>27-30 pts</strong></label><br>
+                    <span class="desc">Uses 5 target modal verbs accurately across 10+ instances with minimal to no grammatical errors.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(1, 24, 'Good', this)">
+                    <label><input type="radio" name="c1" value="24"> <strong>21-26 pts</strong></label><br>
+                    <span class="desc">Uses 4–5 modal verbs accurately (6–9 total instances) with minor grammatical errors.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(1, 18, 'Satisfactory', this)">
+                    <label><input type="radio" name="c1" value="18"> <strong>15-20 pts</strong></label><br>
+                    <span class="desc">Uses 3–4 modal verbs (3–5 total instances), but with noticeable structural or usage errors.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(1, 10, 'Needs Improvement', this)">
+                    <label><input type="radio" name="c1" value="10"> <strong>0-14 pts</strong></label><br>
+                    <span class="desc">Uses fewer than 3 modal verbs correctly, or target structures are largely absent.</span>
+                </td>
+                <td class="score-cell">
+                    <input type="number" id="score1" class="score-input" min="0" max="30" value="0" onchange="updateTotal()"> /30
+                </td>
+            </tr>
+
+            <!-- Row 2: Dependent Prepositions -->
+            <tr id="row2" data-criterion="Dependent Prepositions">
+                <td class="criterion-cell">
+                    <strong>Dependent Prepositions</strong><br>
+                    <small>(20 Points Max)</small>
+                </td>
+                <td class="level-cell" onclick="selectScore(2, 20, 'Excellent', this)">
+                    <label><input type="radio" name="c2" value="20"> <strong>18-20 pts</strong></label><br>
+                    <span class="desc">Correctly uses 5 or more verb + preposition combinations without errors.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(2, 16, 'Good', this)">
+                    <label><input type="radio" name="c2" value="16"> <strong>14-17 pts</strong></label><br>
+                    <span class="desc">Uses 3–4 verb + preposition combinations correctly with occasional minor slips.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(2, 12, 'Satisfactory', this)">
+                    <label><input type="radio" name="c2" value="12"> <strong>10-13 pts</strong></label><br>
+                    <span class="desc">Uses 2 verb + preposition combinations correctly, or exhibits frequent preposition mistakes.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(2, 5, 'Needs Improvement', this)">
+                    <label><input type="radio" name="c2" value="5"> <strong>0-9 pts</strong></label><br>
+                    <span class="desc">Uses 0–1 verb + preposition combinations correctly; incorrect prepositions throughout.</span>
+                </td>
+                <td class="score-cell">
+                    <input type="number" id="score2" class="score-input" min="0" max="20" value="0" onchange="updateTotal()"> /20
+                </td>
+            </tr>
+
+            <!-- Row 3: Content & Examples -->
+            <tr id="row3" data-criterion="Content & Examples">
+                <td class="criterion-cell">
+                    <strong>Content & Examples</strong><br>
+                    <small>(20 Points Max)</small>
+                </td>
+                <td class="level-cell" onclick="selectScore(3, 20, 'Excellent', this)">
+                    <label><input type="radio" name="c3" value="20"> <strong>18-20 pts</strong></label><br>
+                    <span class="desc">Provides detailed, well-explained personal learning strategies with specific examples from Keiser or high school.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(3, 16, 'Good', this)">
+                    <label><input type="radio" name="c3" value="16"> <strong>14-17 pts</strong></label><br>
+                    <span class="desc">Shares clear personal learning strategies with relevant, though slightly general, examples.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(3, 12, 'Satisfactory', this)">
+                    <label><input type="radio" name="c3" value="12"> <strong>10-13 pts</strong></label><br>
+                    <span class="desc">Content is brief or generic; relies on broad statements with few specific personal examples.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(3, 5, 'Needs Improvement', this)">
+                    <label><input type="radio" name="c3" value="5"> <strong>0-9 pts</strong></label><br>
+                    <span class="desc">Content is off-topic, incomplete, or lacks personal learning examples entirely.</span>
+                </td>
+                <td class="score-cell">
+                    <input type="number" id="score3" class="score-input" min="0" max="20" value="0" onchange="updateTotal()"> /20
+                </td>
+            </tr>
+
+            <!-- Row 4: Delivery & Naturalness -->
+            <tr id="row4" data-criterion="Delivery & Naturalness">
+                <td class="criterion-cell">
+                    <strong>Delivery & Naturalness</strong><br>
+                    <small>(15 Points Max)</small>
+                </td>
+                <td class="level-cell" onclick="selectScore(4, 15, 'Excellent', this)">
+                    <label><input type="radio" name="c4" value="15"> <strong>14-15 pts</strong></label><br>
+                    <span class="desc">Speaks fluently and naturally with steady eye contact and minimal reference to outline notes.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(4, 12, 'Good', this)">
+                    <label><input type="radio" name="c4" value="12"> <strong>11-13 pts</strong></label><br>
+                    <span class="desc">Speaks comfortably overall, but occasionally glances at notes or hesitates while organizing thoughts.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(4, 9, 'Satisfactory', this)">
+                    <label><input type="radio" name="c4" value="9"> <strong>8-10 pts</strong></label><br>
+                    <span class="desc">Relies heavily on reading notes or a written script, leading to a somewhat robotic delivery.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(4, 4, 'Needs Improvement', this)">
+                    <label><input type="radio" name="c4" value="4"> <strong>0-7 pts</strong></label><br>
+                    <span class="desc">Reads the entire presentation directly from a script or screen with little to no eye contact.</span>
+                </td>
+                <td class="score-cell">
+                    <input type="number" id="score4" class="score-input" min="0" max="15" value="0" onchange="updateTotal()"> /15
+                </td>
+            </tr>
+
+            <!-- Row 5: Clarity & Pronunciation -->
+            <tr id="row5" data-criterion="Clarity & Pronunciation">
+                <td class="criterion-cell">
+                    <strong>Clarity & Pronunciation</strong><br>
+                    <small>(10 Points Max)</small>
+                </td>
+                <td class="level-cell" onclick="selectScore(5, 10, 'Excellent', this)">
+                    <label><input type="radio" name="c5" value="10"> <strong>9-10 pts</strong></label><br>
+                    <span class="desc">Clear articulation, good pacing, and natural intonation; effortless to understand.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(5, 8, 'Good', this)">
+                    <label><input type="radio" name="c5" value="8"> <strong>7-8 pts</strong></label><br>
+                    <span class="desc">Generally clear pronunciation and good pace; minor mispronunciations do not affect overall comprehension.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(5, 6, 'Satisfactory', this)">
+                    <label><input type="radio" name="c5" value="6"> <strong>5-6 pts</strong></label><br>
+                    <span class="desc">Noticeable pronunciation errors or awkward pacing cause occasional confusion for the listener.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(5, 2, 'Needs Improvement', this)">
+                    <label><input type="radio" name="c5" value="2"> <strong>0-4 pts</strong></label><br>
+                    <span class="desc">Frequent pronunciation, stress, or fluency errors make the presentation difficult to follow.</span>
+                </td>
+                <td class="score-cell">
+                    <input type="number" id="score5" class="score-input" min="0" max="10" value="0" onchange="updateTotal()"> /10
+                </td>
+            </tr>
+
+            <!-- Row 6: Time Management -->
+            <tr id="row6" data-criterion="Time Management">
+                <td class="criterion-cell">
+                    <strong>Time Management</strong><br>
+                    <small>(5 Points Max)</small>
+                </td>
+                <td class="level-cell" onclick="selectScore(6, 5, 'Excellent', this)">
+                    <label><input type="radio" name="c6" value="5"> <strong>5 pts</strong></label><br>
+                    <span class="desc">Runs within 6-min target (5:30–6:30 min).</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(6, 4, 'Good', this)">
+                    <label><input type="radio" name="c6" value="4"> <strong>4 pts</strong></label><br>
+                    <span class="desc">Between 4:30–5:29 or 6:31–7:00 minutes.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(6, 3, 'Satisfactory', this)">
+                    <label><input type="radio" name="c6" value="3"> <strong>2-3 pts</strong></label><br>
+                    <span class="desc">Between 3:30–4:29 or 7:01–8:00 minutes.</span>
+                </td>
+                <td class="level-cell" onclick="selectScore(6, 1, 'Needs Improvement', this)">
+                    <label><input type="radio" name="c6" value="1"> <strong>0-1 pt</strong></label><br>
+                    <span class="desc">Under 3:30 minutes or over 8:00 minutes.</span>
+                </td>
+                <td class="score-cell">
+                    <input type="number" id="score6" class="score-input" min="0" max="5" value="0" onchange="updateTotal()"> /5
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="total-box">
+        Total Grade: <span id="totalScore">0</span> / 100
+    </div>
+
+    <div class="form-group" style="margin-top: 20px;">
+        <label for="teacherNotes">Optional Teacher Notes / Specific Comments:</label>
+        <textarea id="teacherNotes" rows="2" placeholder="e.g., Great effort! Make sure to review the preposition 'depend on'..."></textarea>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-build" onclick="generateStructuredFeedback()">📝 Build Professional Email</button>
+    </div>
+
+    <div class="form-group">
+        <label>Formatted Professional Email Preview:</label>
+        <div id="emailPreview">
+            <em style="color:#777;">Click "Build Professional Email" above to generate a centered, spacious preview here.</em>
+        </div>
+    </div>
+
+    <button class="btn" onclick="generateReport()">📋 Copy Formatted Email for Outlook / Gmail</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
